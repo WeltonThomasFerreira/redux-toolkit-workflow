@@ -45,6 +45,7 @@ export const store = configureStore({
   reducer: {},
 })
 ```
+Isso já configura o ReduxDevTools.
 
 ## Provendo a redux store para o react
 
