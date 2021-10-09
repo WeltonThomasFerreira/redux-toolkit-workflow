@@ -1,44 +1,181 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+# Resumo: Redux Toolkit
 
-## Available Scripts
+Este projeto foi criado com [Create React App](https://github.com/facebook/create-react-app), usando o [Redux](https://redux.js.org/) e [Redux Toolkit](https://redux-toolkit.js.org/) como modelos.
 
-In the project directory, you can run:
+Documentação: [https://redux-toolkit.js.org](https://redux-toolkit.js.org/)
 
-### `npm start`
+Quick Start: [https://redux-toolkit.js.org/tutorials/quick-start](https://redux-toolkit.js.org/tutorials/quick-start)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Instalação
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Usando create react app
 
-### `npm test`
+```bash
+# Redux + Plain JS template
+npx create-react-app my-app --template redux
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Adicionando em um app
 
-### `npm run build`
+```bash
+# NPM
+npm install @reduxjs/toolkit react-redux
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# API's
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- **configureStore()**
+- **createReducer()**
+- **createAction()**
+- **createSlice()**
+- createAsyncThunk
+- createEntityAdapter
+- createSelector
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Implementado redux
 
-### `npm run eject`
+## Criando uma redux store
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```jsx
+// src/app/store.js
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+import { configureStore } from '@reduxjs/toolkit'
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+export const store = configureStore({
+  reducer: {},
+})
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Provendo a redux store para o react
 
-## Learn More
+```jsx
+// index.js
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
+import App from './App'
+**import { store } from './app/store'
+import { Provider } from 'react-redux'**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+ReactDOM.render(
+  **<Provider store={store}>**
+    <App />
+  </Provider>,
+  document.getElementById('root')
+)
+```
+
+## Criando reducers e actions com createSlice()
+
+### Exemplo: Contador
+
+```jsx
+// features/counter/counterSlice.js
+
+import { createSlice } from '@reduxjs/toolkit'
+
+const initialState = {
+  value: 0,
+}
+
+export const counterSlice = createSlice({
+  name: 'counter',
+  initialState,
+  reducers: {
+    increment: (state) => {
+      state.value += 1
+    },
+    decrement: (state) => {
+      state.value -= 1
+    },
+    incrementByAmount: (state, action) => {
+      state.value += action.payload
+    },
+  },
+})
+
+// As actions são criadas para da cada Reducer
+export const { 
+increment, 
+decrement, 
+incrementByAmount } = counterSlice.actions
+
+// .reducer é a combinação dos três reducers
+export default counterSlice.reducer
+```
+
+### Importando slice/reducers para a store
+
+```jsx
+// src/app/store.js
+
+import { configureStore } from '@reduxjs/toolkit'
+**import counterReducer from '../features/counter/counterSlice'**
+
+export default configureStore({
+  reducer: {
+    **counter: counterReducer,**
+  },
+})
+```
+
+## Usando states e actions redux nos componentes react
+
+```jsx
+// features/counter/Counter.js
+
+import React from 'react'
+// Importamos os hooks para conectar o componente ao redux
+**import { useSelector, useDispatch } from 'react-redux'**
+// Importamos as actions para evoluirmos o estado na store
+**import { decrement, increment } from './counterSlice'**
+
+export function Counter() {
+	// useSelector() permite acessar o estado na store
+  **const count = useSelector((state) => state.counter.value)
+  const dispatch = useDispatch()**
+
+  return (
+    <div>
+      <div>
+        <button
+          aria-label="Increment value"
+          onClick={() => **dispatch(increment())**}
+        >
+          Increment
+        </button>
+        <span>{count}</span>
+        <button
+          aria-label="Decrement value"
+          onClick={() => **dispatch(decrement())**}
+        >
+          Decrement
+        </button>
+      </div>
+    </div>
+  )
+}
+```
+
+# Explicando a estrutura de pastas e arquivos
+
+A organização usa a lógica de "feature folders". Exemplo:
+
+- **/src**
+    - **index.jsx**
+    - **/app**
+        - **store.js**
+        - **rootReducer.js** (opcional)
+        - **App.js**
+        - **/common** (utiliátios e componentes genéricos)
+    - **/features**
+        - **/counter**
+            - **Counter.jsx** (componente)
+            - **counterSlice.js** (reducer, action)
+
+---
+
+A pasta 'pages' ainda pode ser usada no nível de preferência.
+
+A pasta 'components', no exemplo, iria dentro de /counter e agruparia os componentes pertinente ao 'Counter.jsx'. Counter se comportaria como um sub app.
