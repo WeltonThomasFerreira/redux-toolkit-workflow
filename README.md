@@ -55,11 +55,11 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
-**import { store } from './app/store'
-import { Provider } from 'react-redux'**
+import { store } from './app/store'
+import { Provider } from 'react-redux'
 
 ReactDOM.render(
-  **<Provider store={store}>**
+  <Provider store={store}>
     <App />
   </Provider>,
   document.getElementById('root')
@@ -111,11 +111,11 @@ export default counterSlice.reducer
 // src/app/store.js
 
 import { configureStore } from '@reduxjs/toolkit'
-**import counterReducer from '../features/counter/counterSlice'**
+import counterReducer from '../features/counter/counterSlice'
 
 export default configureStore({
   reducer: {
-    **counter: counterReducer,**
+    counter: counterReducer,
   },
 })
 ```
@@ -127,28 +127,28 @@ export default configureStore({
 
 import React from 'react'
 // Importamos os hooks para conectar o componente ao redux
-**import { useSelector, useDispatch } from 'react-redux'**
+import { useSelector, useDispatch } from 'react-redux'
 // Importamos as actions para evoluirmos o estado na store
-**import { decrement, increment } from './counterSlice'**
+import { decrement, increment } from './counterSlice'
 
 export function Counter() {
 	// useSelector() permite acessar o estado na store
-  **const count = useSelector((state) => state.counter.value)
-  const dispatch = useDispatch()**
+  const count = useSelector((state) => state.counter.value)
+  const dispatch = useDispatch()
 
   return (
     <div>
       <div>
         <button
           aria-label="Increment value"
-          onClick={() => **dispatch(increment())**}
+          onClick={() => dispatch(increment())}
         >
           Increment
         </button>
         <span>{count}</span>
         <button
           aria-label="Decrement value"
-          onClick={() => **dispatch(decrement())**}
+          onClick={() => dispatch(decrement())}
         >
           Decrement
         </button>
