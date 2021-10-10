@@ -6,19 +6,22 @@ Documentação: [https://redux-toolkit.js.org](https://redux-toolkit.js.org/)
 
 Quick Start: [https://redux-toolkit.js.org/tutorials/quick-start](https://redux-toolkit.js.org/tutorials/quick-start)
 
+# Observação
+
+Esse método de implementação usa Hooks, ou seja, não funcionam em componentes de classe, apenas componente funcionais.
+Se tiver dúvidas sobre o funcionamento de Hooks em React, consulte a [documentação.](https://pt-br.reactjs.org/docs/hooks-intro.html)
+
 # Instalação
 
 ## Usando create react app
 
 ```bash
-# Redux + Plain JS template
 npx create-react-app my-app --template redux
 ```
 
 ## Adicionando em um app
 
 ```bash
-# NPM
 npm install @reduxjs/toolkit react-redux
 ```
 
@@ -41,7 +44,7 @@ npm install @reduxjs/toolkit react-redux
 
 import { configureStore } from '@reduxjs/toolkit'
 
-export const store = configureStore({
+export default configureStore({
   reducer: {},
 })
 ```
@@ -134,7 +137,7 @@ import { decrement, increment } from './counterSlice'
 
 export function Counter() {
 // useSelector() permite acessar o estado na store
-  const count = useSelector((state) => state.counter.value)
+  const { count } = useSelector((state) => state.counter)
   const dispatch = useDispatch()
 
   return (
