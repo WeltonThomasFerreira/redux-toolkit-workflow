@@ -9,7 +9,8 @@ Quick Start: [https://redux-toolkit.js.org/tutorials/quick-start](https://redux-
 # Observação
 
 Esse método de implementação usa Hooks, ou seja, não funcionam em componentes de classe, apenas componente funcionais.
-Se tiver dúvidas sobre o funcionamento de Hooks em React, consulte a [documentação.](https://pt-br.reactjs.org/docs/hooks-intro.html)
+
+Se tiver dúvidas sobre o funcionamento de Hooks em React consulte a [documentação.](https://pt-br.reactjs.org/docs/hooks-intro.html)
 
 # Instalação
 
