@@ -10,7 +10,7 @@ Exemplo com formulário: [exercise-forms-redux](https://github.com/WeltonThomasF
 
 # Observação
 
-Esse método de implementação usa Hooks, ou seja, não funcionam em componentes de classe, apenas componente funcionais.
+Esse método de implementação usa Hooks, ou seja, não funcionam em componentes de classe, apenas componentes funcionais.
 
 Se tiver dúvidas sobre o funcionamento de Hooks em React consulte a [documentação.](https://pt-br.reactjs.org/docs/hooks-intro.html)
 
