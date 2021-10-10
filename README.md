@@ -6,6 +6,8 @@ Documentação: [https://redux-toolkit.js.org](https://redux-toolkit.js.org/)
 
 Quick Start: [https://redux-toolkit.js.org/tutorials/quick-start](https://redux-toolkit.js.org/tutorials/quick-start)
 
+Exemplo com formulário: [exercise-forms-redux](https://github.com/WeltonThomasFerreira/exercise-forms-redux)
+
 # Observação
 
 Esse método de implementação usa Hooks, ou seja, não funcionam em componentes de classe, apenas componente funcionais.
