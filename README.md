@@ -8,6 +8,8 @@ Quick Start: [https://redux-toolkit.js.org/tutorials/quick-start](https://redux-
 
 Exemplo com formulário: [exercise-forms-redux](https://github.com/WeltonThomasFerreira/exercise-forms-redux)
 
+Exemplo com actions assíncronas: [redux-thunk-subreddits](https://github.com/WeltonThomasFerreira/redux-thunk-subreddits)
+
 # Observação
 
 Esse método de implementação usa Hooks, ou seja, não funcionam em componentes de classe, apenas componentes funcionais.
