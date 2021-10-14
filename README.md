@@ -169,7 +169,7 @@ export function Counter() {
 
 ## Criando actions assíncronas
 
-Actions assíncronas tem comportamento parecidos com listeners e a sua execução depende do status da promise: pending, fullfilled ou reject.
+Actions assíncronas tem comportamento parecido com listeners e a sua execução depende do status da promise: pending, fullfilled ou reject.
 
 ```jsx
 // features/counter/Counter.js
