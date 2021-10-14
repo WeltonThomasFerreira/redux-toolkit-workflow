@@ -36,7 +36,7 @@ npm install @reduxjs/toolkit react-redux
 - **createReducer()**
 - **createAction()**
 - **createSlice()**
-- createAsyncThunk
+- **createAsyncThunk**
 - createEntityAdapter
 - createSelector
 
