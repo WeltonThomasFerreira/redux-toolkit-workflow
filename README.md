@@ -210,7 +210,7 @@ export const counterSlice = createSlice({
 ```jsx
 import { incrementAsync } from './counterSlice';
 
-dispatch(incrementAsync(amount)
+dispatch(incrementAsync(amount))
 ```
 
 # Explicando a estrutura de pastas e arquivos
