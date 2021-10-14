@@ -167,6 +167,52 @@ export function Counter() {
 }
 ```
 
+## Criando actions assíncronas
+
+Actions assíncronas tem comportamento parecidos com listeners e a sua execução depende do status da promise: pending, fullfilled ou reject.
+
+```jsx
+// features/counter/Counter.js
+
+//  importação do thunk
+import { createAsyncThunk } from '@reduxjs/toolkit';
+
+// Essa é a função assíncrona que vamos despachar no componente.
+export const incrementAsync = createAsyncThunk(
+  'counter/fetchCount',
+  async (amount) => {
+    const response = await fetchCount(amount);
+    // O valor é retornado quando a promise fica com o status de 'fullfilled'.
+    return response.data;
+  }
+);
+
+export const counterSlice = createSlice({
+  name: 'counter',
+  initialState,
+  reducers: {},
+  // Aqui vai o reducer assíncrono, com as actions definidas pelo estado da promise.
+  extraReducers: (builder) => {
+    builder
+      .addCase(incrementAsync.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(incrementAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        state.value += action.payload;
+      });
+  },
+});
+```
+
+## Usando actions assíncronas nos componentes
+
+```jsx
+import { incrementAsync } from './counterSlice';
+
+dispatch(incrementAsync(amount)
+```
+
 # Explicando a estrutura de pastas e arquivos
 
 A organização usa a lógica de "feature folders". Exemplo:
