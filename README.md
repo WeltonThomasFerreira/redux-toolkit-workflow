@@ -10,6 +10,8 @@ Exemplo com formulário: [exercise-forms-redux](https://github.com/WeltonThomasF
 
 Exemplo com actions assíncronas: [redux-thunk-subreddits](https://github.com/WeltonThomasFerreira/redux-thunk-subreddits)
 
+Guia para uso do redux padrão: [redux-standard](https://github.com/WeltonThomasFerreira/counter-redux-workflow/blob/main/REDUX_STANDARD.md)
+
 # Observação
 
 Esse método de implementação usa Hooks, ou seja, não funcionam em componentes de classe, apenas componentes funcionais.
