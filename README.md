@@ -10,6 +10,8 @@ Exemplo com formulário: [exercise-forms-redux](https://github.com/WeltonThomasF
 
 Exemplo com actions assíncronas: [redux-thunk-subreddits](https://github.com/WeltonThomasFerreira/redux-thunk-subreddits)
 
+Exemplo com mais de um thunk: [project-trivia-react-redux](https://github.com/tryber/sd-014-b-project-trivia-react-redux/pull/104)
+
 Guia para uso do redux padrão: [redux-standard](https://github.com/WeltonThomasFerreira/counter-redux-workflow/blob/main/REDUX_STANDARD.md)
 
 # Observação
