@@ -109,11 +109,11 @@ export const fetchFoo = (params) => async (dispatch) => {
   const response = await fetchFooAPI(params);
   dispatch(actionFoo(response));
 };
-``
+```
 
 ### Ex: API
 
-``
+```
 export default async (paramas) => {
   const response = await fetch(
     `https://bar.com/api.php?=${params}`,
