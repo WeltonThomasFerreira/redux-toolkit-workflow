@@ -104,7 +104,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(FooBar);
 
 ### Actions
 
-``
+```jsx
 export const fetchFoo = (params) => async (dispatch) => {
   const response = await fetchFooAPI(params);
   dispatch(actionFoo(response));
@@ -120,4 +120,4 @@ export default async (paramas) => {
   );
   return response;
 };
-``
+```
