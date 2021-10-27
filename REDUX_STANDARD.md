@@ -1,6 +1,6 @@
 # Resumo: Redux Standard
 
-# Store
+## Store
 
 ```jsx
 import { createStore, applyMiddleware } from 'redux';
@@ -11,7 +11,7 @@ import rootReducer from './folder/file';
 export default createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 ```
 
-# Provider
+## Provider
 
 ```jsx
 // index.jsx
@@ -30,7 +30,7 @@ ReactDOM.render(
 );
 ```
 
-# Actions
+## Actions
 
 ```jsx
 export const REDUX_ACTION = 'REDUX_ACTION';
@@ -41,7 +41,7 @@ export const reduxAction = (value) => ({
 });
 ```
 
-# Reducer
+## Reducer
 
 ```jsx
 import { REDUX_ACTION } from './folder/file';
@@ -58,7 +58,7 @@ export default function reduxReducer(state = initialState, action) {
 }
 ```
 
-# Root Reducer
+## Root Reducer
 
 ```jsx
 import { combineReducers } from 'redux';
@@ -71,7 +71,7 @@ export default combineReducers({
 });
 ```
 
-# Usando no Componente
+## Usando no Componente
 
 ```jsx
 import { connect } from 'react-redux';
@@ -99,3 +99,25 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(mapStateToProps, mapDispatchToProps)(FooBar);
 //export default connect(null, mapDispatchToProps)(FooBar);
 ```
+
+## Usando Thunks
+
+### Actions
+
+``
+export const fetchFoo = (params) => async (dispatch) => {
+  const response = await fetchFooAPI(params);
+  dispatch(actionFoo(response));
+};
+``
+
+### Ex: API
+
+``
+export default async (paramas) => {
+  const response = await fetch(
+    `https://bar.com/api.php?=${params}`,
+  );
+  return response;
+};
+``
