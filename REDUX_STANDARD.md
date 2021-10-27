@@ -114,7 +114,7 @@ export const fetchFoo = (params) => async (dispatch) => {
 ### Ex: API
 
 ```jsx
-export default async (paramas) => {
+export default async (params) => {
   const response = await fetch(
     `https://bar.com/api.php?=${params}`,
   );
